@@ -1,31 +1,13 @@
 name: This is a github action
 on: [push]
 jobs: 
-  Echo: 
-    runs-on: ubuntu-latest
-    steps:
-       - name: checkout repo
-         uses: actions/checkout
-       - name: cat temp.txt
-         run: cat temp.txt
-
-      test:
-        runs-on: ubuntu-latest
-        steps: 
-         - name: test
-           run: sleep 3s &&  echo test 
-
-      build:
-        runs-on: ubuntu-latest
-        needs: [test]
-        steps:
-         - name: build
-          run: sleep 5s && echo build 
-       deploy: 
-         runs-on: ubuntu-latest 
-         needs: [build]
-         steps: 
-          - name: test 
-            run: echo deploy 
-            
-         
+  node: 
+   runs-on: ubuntu-latest
+   steps:
+     - name: setup node.js   
+       uses: actions/setup-node@v4
+       with: 
+         node-version: '20.11.0'
+       - run: node --version
+        
+       
